@@ -66,7 +66,7 @@
       <url>http://repository.tomitribe.com/content/repositories/releases</url>
     </repository>
     <snapshotRepository>
-      <id>tomitribe.public.releases.snapshots.https</id>
+      <id>tomitribe.public.snapshots.https</id>
       <name>Tomitribe Public Releases Snapshot Repository</name>
       <url>http://repository.tomitribe.com/content/repositories/snapshots</url>
     </snapshotRepository>
