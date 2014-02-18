@@ -39,6 +39,12 @@
 
   <inceptionYear>2014</inceptionYear>
 
+  <scm>
+    <connection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</connection>
+    <url>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</url>
+    <developerConnection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</developerConnection>
+  </scm>
+
   <repositories>
     <!-- Apache Snapshot -->
     <repository>
