@@ -46,15 +46,38 @@
   </scm>
 
   <repositories>
-    <!-- Apache Snapshot -->
+    <!-- Tomitribe third party repo -->
     <repository>
-      <id>apache-snapshots</id>
-      <name>Apache Snapshot</name>
-      <url>http://repository.apache.org/snapshots/</url>
+      <id>tomitribe-3rd-party</id>
+      <name>Tomitribe Releases 3rd Party</name>
+      <url>http://repository.tomitribe.com/content/repositories/thirdparty/</url>
     </repository>
-    <!-- Tomitribe Public Snapshot Repo -->
+
+    <!-- Tomitribe proxied repos -->
     <repository>
-      <id>tomitribe-snapshots-public</id>
+      <id>tomitribe-apache-snapshots</id>
+      <name>Tomitribe Apache Snapshot proxy</name>
+      <url>http://repository.tomitribe.com/content/repositories/apache-snapshots/</url>
+    </repository>
+    <repository>
+      <id>tomitribe-central</id>
+      <name>Tomitribe Central proxy</name>
+      <url>http://repository.tomitribe.com/content/repositories/central/</url>
+    </repository>
+    <repository>
+      <id>tomitribe-codehaus-snapshots</id>
+      <name>Tomitribe Codehaus snapshot proxy</name>
+      <url>http://repository.tomitribe.com/content/repositories/codehaus-snapshots/</url>
+    </repository>
+
+    <!-- Tomitribe public repos -->
+    <repository>
+      <id>tomitribe.public.releases.https</id>
+      <name>Tomitribe Releases Public</name>
+      <url>http://repository.tomitribe.com/content/repositories/releases/</url>
+    </repository>
+    <repository>
+      <id>tomitribe.public.snapshots.https</id>
       <name>Tomitribe Releases Public Snapshot</name>
       <url>http://repository.tomitribe.com/content/repositories/snapshots/</url>
       <releases>
@@ -62,7 +85,6 @@
       </releases>
     </repository>
   </repositories>
-
 
   <distributionManagement>
     <!--You need to define 'server' entries in your settings.xml to gain access here-->
@@ -83,7 +105,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <maven.checkstyle.plugin.version>2.11</maven.checkstyle.plugin.version>
-    <tomitribe.dev.rules.version>1.0.0</tomitribe.dev.rules.version>
+    <tomitribe.dev.rules.version>1.1.0-SNAPSHOT</tomitribe.dev.rules.version>
     <checkstyle.header.file>tomitribe/asf-header.txt</checkstyle.header.file>
   </properties>
 
