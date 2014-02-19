@@ -145,6 +145,7 @@
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+    <!--WARNING: Never reference these properties outside of this pom, especially not in children-->
     <maven.checkstyle.plugin.version>2.11</maven.checkstyle.plugin.version>
     <tomitribe.dev.rules.version>1.1.0-SNAPSHOT</tomitribe.dev.rules.version>
     <checkstyle.header.file>tomitribe/asf-header.txt</checkstyle.header.file>
