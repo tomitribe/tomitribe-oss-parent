@@ -28,7 +28,7 @@
   <groupId>com.tomitribe</groupId>
   <artifactId>oss-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1</version>
+  <version>2-SNAPSHOT</version>
 
   <name>Tomitribe :: OSS Parent</name>
   <url>http://www.tomitribe.com/</url>
@@ -85,6 +85,47 @@
       </releases>
     </repository>
   </repositories>
+
+  <pluginRepositories>
+    <!-- Tomitribe third party repo -->
+    <pluginRepository>
+      <id>tomitribe-3rd-party</id>
+      <name>Tomitribe Releases 3rd Party</name>
+      <url>http://repository.tomitribe.com/content/repositories/thirdparty/</url>
+    </pluginRepository>
+
+    <!-- Tomitribe proxied repos -->
+    <pluginRepository>
+      <id>tomitribe-apache-snapshots</id>
+      <name>Tomitribe Apache Snapshot proxy</name>
+      <url>http://repository.tomitribe.com/content/repositories/apache-snapshots/</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>tomitribe-central</id>
+      <name>Tomitribe Central proxy</name>
+      <url>http://repository.tomitribe.com/content/repositories/central/</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>tomitribe-codehaus-snapshots</id>
+      <name>Tomitribe Codehaus snapshot proxy</name>
+      <url>http://repository.tomitribe.com/content/repositories/codehaus-snapshots/</url>
+    </pluginRepository>
+
+    <!-- Tomitribe public repos -->
+    <pluginRepository>
+      <id>tomitribe.public.releases.https</id>
+      <name>Tomitribe Releases Public</name>
+      <url>http://repository.tomitribe.com/content/repositories/releases/</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>tomitribe.public.snapshots.https</id>
+      <name>Tomitribe Releases Public Snapshot</name>
+      <url>http://repository.tomitribe.com/content/repositories/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
 
   <distributionManagement>
     <!--You need to define 'server' entries in your settings.xml to gain access here-->
