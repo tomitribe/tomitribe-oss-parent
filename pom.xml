@@ -25,7 +25,7 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.tomitribe</groupId>
+  <groupId>org.tomitribe</groupId>
   <artifactId>oss-parent</artifactId>
   <packaging>pom</packaging>
   <version>2-SNAPSHOT</version>
