@@ -50,6 +50,9 @@
       <id>tomitribe-public-all</id>
       <name>Tomitribe Public Repository</name>
       <url>http://repository.tomitribe.com/content/groups/public/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
     </repository>
   </repositories>
 
