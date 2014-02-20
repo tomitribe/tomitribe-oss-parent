@@ -46,36 +46,31 @@
   </scm>
 
   <repositories>
-    <!-- Tomitribe third party repo -->
+
     <repository>
-      <id>tomitribe-3rd-party</id>
-      <name>Tomitribe Releases 3rd Party</name>
-      <url>http://repository.tomitribe.com/content/repositories/thirdparty/</url>
+      <id>apache-snapshot</id>
+      <name>Apache Snapshot Repository</name>
+      <url>http://repository.apache.org/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
     </repository>
 
-    <!-- Tomitribe proxied repos -->
-    <repository>
-      <id>tomitribe-apache-snapshots</id>
-      <name>Tomitribe Apache Snapshot proxy</name>
-      <url>http://repository.tomitribe.com/content/repositories/apache-snapshots/</url>
-    </repository>
-    <repository>
-      <id>tomitribe-central</id>
-      <name>Tomitribe Central proxy</name>
-      <url>http://repository.tomitribe.com/content/repositories/central/</url>
-    </repository>
-    <repository>
-      <id>tomitribe-codehaus-snapshots</id>
-      <name>Tomitribe Codehaus snapshot proxy</name>
-      <url>http://repository.tomitribe.com/content/repositories/codehaus-snapshots/</url>
-    </repository>
-
-    <!-- Tomitribe public repos -->
     <repository>
       <id>tomitribe.public.releases.https</id>
       <name>Tomitribe Releases Public</name>
       <url>http://repository.tomitribe.com/content/repositories/releases/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
     </repository>
+
     <repository>
       <id>tomitribe.public.snapshots.https</id>
       <name>Tomitribe Releases Public Snapshot</name>
@@ -83,40 +78,37 @@
       <releases>
         <enabled>false</enabled>
       </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
     </repository>
   </repositories>
 
   <pluginRepositories>
-    <!-- Tomitribe third party repo -->
     <pluginRepository>
-      <id>tomitribe-3rd-party</id>
-      <name>Tomitribe Releases 3rd Party</name>
-      <url>http://repository.tomitribe.com/content/repositories/thirdparty/</url>
+      <id>apache-snapshot</id>
+      <name>Apache Snapshot Repository</name>
+      <url>http://repository.apache.org/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
     </pluginRepository>
 
-    <!-- Tomitribe proxied repos -->
-    <pluginRepository>
-      <id>tomitribe-apache-snapshots</id>
-      <name>Tomitribe Apache Snapshot proxy</name>
-      <url>http://repository.tomitribe.com/content/repositories/apache-snapshots/</url>
-    </pluginRepository>
-    <pluginRepository>
-      <id>tomitribe-central</id>
-      <name>Tomitribe Central proxy</name>
-      <url>http://repository.tomitribe.com/content/repositories/central/</url>
-    </pluginRepository>
-    <pluginRepository>
-      <id>tomitribe-codehaus-snapshots</id>
-      <name>Tomitribe Codehaus snapshot proxy</name>
-      <url>http://repository.tomitribe.com/content/repositories/codehaus-snapshots/</url>
-    </pluginRepository>
-
-    <!-- Tomitribe public repos -->
     <pluginRepository>
       <id>tomitribe.public.releases.https</id>
       <name>Tomitribe Releases Public</name>
       <url>http://repository.tomitribe.com/content/repositories/releases/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
     </pluginRepository>
+
     <pluginRepository>
       <id>tomitribe.public.snapshots.https</id>
       <name>Tomitribe Releases Public Snapshot</name>
@@ -124,6 +116,9 @@
       <releases>
         <enabled>false</enabled>
       </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
     </pluginRepository>
   </pluginRepositories>
 
@@ -134,6 +129,7 @@
       <name>Tomitribe Public Releases Repository</name>
       <url>http://repository.tomitribe.com/content/repositories/releases</url>
     </repository>
+
     <snapshotRepository>
       <id>tomitribe.public.snapshots.https</id>
       <name>Tomitribe Public Releases Snapshot Repository</name>
