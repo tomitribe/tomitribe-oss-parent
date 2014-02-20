@@ -46,41 +46,10 @@
   </scm>
 
   <repositories>
-
     <repository>
-      <id>apache-snapshot</id>
-      <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-
-    <repository>
-      <id>tomitribe.public.releases.https</id>
-      <name>Tomitribe Releases Public</name>
-      <url>http://repository.tomitribe.com/content/repositories/releases/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-
-    <repository>
-      <id>tomitribe.public.snapshots.https</id>
-      <name>Tomitribe Releases Public Snapshot</name>
-      <url>http://repository.tomitribe.com/content/repositories/snapshots/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
+      <id>tomitribe-public-all</id>
+      <name>Tomitribe Public Repository</name>
+      <url>http://repository.tomitribe.com/content/groups/public/</url>
     </repository>
   </repositories>
 
