@@ -264,7 +264,7 @@
         </executions>
         <dependencies>
           <dependency>
-            <groupId>com.tomitribe</groupId>
+            <groupId>org.tomitribe</groupId>
             <artifactId>tomitribe-checkstyle-rules</artifactId>
             <version>${tomitribe.dev.rules.version}</version>
           </dependency>
