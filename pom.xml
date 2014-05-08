@@ -25,6 +25,12 @@
 
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
   <groupId>org.tomitribe</groupId>
   <artifactId>oss-parent</artifactId>
   <packaging>pom</packaging>
@@ -36,7 +42,13 @@
     <name>Tomitribe Corporation</name>
     <url>http://www.tomitribe.com/</url>
   </organization>
-
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   <inceptionYear>2014</inceptionYear>
 
   <scm>
@@ -45,118 +57,11 @@
     <developerConnection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</developerConnection>
   </scm>
 
-  <repositories>
-    <repository>
-      <id>maven-central</id>
-      <name>Maven Central</name>
-      <url>http://repo1.maven.org/maven2/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>apache-snapshot</id>
-      <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>codehaus-snapshot</id>
-      <name>Codehaus Snapshots</name>
-      <url>https://nexus.codehaus.org/content/repositories/snapshots/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>codehaus-release</id>
-      <name>Codehaus Releases</name>
-      <url>https://nexus.codehaus.org/content/repositories/releases/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-
-    <!-- Tomitribe hosted -->
-    <repository>
-      <id>tomitribe-public</id>
-      <name>Tomitribe Hosted</name>
-      <url>http://repository.tomitribe.com/content/groups/tomitribe-public/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-
-  </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>apache-snapshot</id>
-      <name>Apache Snapshot Repository</name>
-      <url>http://repository.apache.org/snapshots/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-
-    <!-- Tomitribe hosted -->
-    <pluginRepository>
-      <id>tomitribe-public</id>
-      <name>Tomitribe Hosted</name>
-      <url>http://repository.tomitribe.com/content/groups/tomitribe-public/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-
-  </pluginRepositories>
-
-  <distributionManagement>
-    <!--You need to define 'server' entries in your settings.xml to gain access here-->
-    <repository>
-      <id>tomitribe.public.releases.https</id>
-      <name>Tomitribe Public Releases Repository</name>
-      <url>http://repository.tomitribe.com/content/repositories/releases</url>
-    </repository>
-
-    <snapshotRepository>
-      <id>tomitribe.public.snapshots.https</id>
-      <name>Tomitribe Public Releases Snapshot Repository</name>
-      <url>http://repository.tomitribe.com/content/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
-
   <properties>
-
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!--WARNING: Never reference these properties outside of this pom, especially not in children-->
-    <maven.checkstyle.plugin.version>2.11</maven.checkstyle.plugin.version>
-    <tomitribe.dev.rules.version>1.1.0-SNAPSHOT</tomitribe.dev.rules.version>
-    <checkstyle.header.file>tomitribe/asf-header.txt</checkstyle.header.file>
+    <maven.checkstyle.plugin.version>2.12.1</maven.checkstyle.plugin.version>
   </properties>
 
   <build>
@@ -248,27 +153,164 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>${maven.checkstyle.plugin.version}</version>
-        <configuration>
-          <configLocation>tomitribe/default-checks.xml</configLocation>
-          <headerFile>${maven.checkstyle.plugin.version}</headerFile>
-          <consoleOutput>true</consoleOutput>
-        </configuration>
         <executions>
           <execution>
             <id>verify-style</id>
-            <phase>verify</phase>
+            <phase>process-classes</phase>
             <goals>
               <goal>check</goal>
             </goals>
           </execution>
         </executions>
-        <dependencies>
-          <dependency>
-            <groupId>org.tomitribe</groupId>
-            <artifactId>tomitribe-checkstyle-rules</artifactId>
-            <version>${tomitribe.dev.rules.version}</version>
-          </dependency>
-        </dependencies>
+        <configuration>
+          <logViolationsToConsole>true</logViolationsToConsole>
+          <checkstyleRules>
+            <module name="Checker">
+              <module name="SuppressionCommentFilter"/>
+
+              <!-- Checks for Size Violations.                    -->
+              <!-- See http://checkstyle.sf.net/config_sizes.html -->
+              <module name="FileLength">
+                <property name="max" value="3500"/>
+                <property name="fileExtensions" value="java"/>
+              </module>
+
+              <!-- Checks for whitespace                               -->
+              <!-- See http://checkstyle.sf.net/config_whitespace.html -->
+              <module name="FileTabCharacter"/>
+
+              <!-- allow usage of CHECKSTYLE:OFF and CHECKSTYLE:ON -->
+              <module name="SuppressionCommentFilter"/>
+
+              <module name="TreeWalker">
+                <!-- needed for the SuppressionCommentFilter -->
+                <module name="FileContentsHolder"/>
+
+                <!-- Checks for Naming Conventions.                  -->
+                <!-- See http://checkstyle.sf.net/config_naming.html -->
+                <module name="ConstantName">
+                  <!-- Normal rules, except that:
+                     -  * any name can start with an underscore.
+                     -  * "log" is allowed; this is a traditional name for log objects
+                     -  * names ending with "ThreadLocal" are allowed so that threadlocal vars don't have to be
+                     -    all-caps. They are static final, but are not really constants. Yes, type prefixes
+                     -    on variable names sucks ("hungarian notation") but checkstyle doesn't allow
+                     -    name rules to vary by the type of the constant, and no other alternative seems
+                     -    any better.
+                     -->
+                  <property name="format"
+                            value="^_?((log)|(logger)|([a-z][a-zA-Z]*ThreadLocal)|([A-Z][A-Z0-9]*(_[A-Z0-9]+)*))$"/>
+                </module>
+
+                <module name="LocalVariableName"/>
+                <module name="MethodName">
+                  <property name="format" value="^_?[a-z][a-zA-Z0-9]*$"/>
+                </module>
+                <module name="PackageName"/>
+                <module name="LocalFinalVariableName"/>
+                <module name="ParameterName"/>
+                <module name="StaticVariableName"/>
+                <module name="TypeName">
+                  <property name="format" value="^_?[A-Z][a-zA-Z0-9]*$"/>
+                </module>
+
+                <!-- Checks for imports                              -->
+                <!-- See http://checkstyle.sf.net/config_import.html -->
+                <module name="AvoidStarImport">
+                  <property name="excludes"
+                            value="java.io,java.net,java.util,javax.enterprise.inject.spi,javax.enterprise.context"/>
+                </module>
+                <module name="IllegalImport"/>
+                <module name="RedundantImport"/>
+                <module name="UnusedImports"/>
+
+
+                <module name="LineLength">
+                  <property name="max" value="180"/>
+                  <property name="ignorePattern" value="@version|@see"/>
+                </module>
+                <module name="MethodLength">
+                  <property name="max" value="250"/>
+                </module>
+                <module name="ParameterNumber">
+                  <property name="max" value="10"/>
+                </module>
+
+                <!-- Checks for blocks. You know, those {}'s         -->
+                <!-- See http://checkstyle.sf.net/config_blocks.html -->
+                <module name="EmptyBlock">
+                  <property name="option" value="text"/>
+                </module>
+
+                <module name="NeedBraces"/>
+                <module name="LeftCurly">
+                  <property name="option" value="NLOW"/>
+                </module>
+                <module name="RightCurly">
+                  <property name="option" value="SAME"/>
+                </module>
+
+                <!-- Checks for common coding problems               -->
+                <!-- See http://checkstyle.sf.net/config_coding.html -->
+                <module name="EmptyStatement"/>
+                <module name="EqualsHashCode"/>
+                <module name="DefaultComesLast"/>
+                <module name="MissingSwitchDefault"/>
+                <module name="FallThrough"/>
+                <module name="MultipleVariableDeclarations"/>
+
+                <!-- Checks for class design                         -->
+                <!-- See http://checkstyle.sf.net/config_design.html -->
+                <module name="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck">
+                  <property name="severity" value="ignore"/>
+                </module>
+
+                <module name="HideUtilityClassConstructor"/>
+
+                <module name="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck">
+                  <property name="packageAllowed" value="false"/>
+                  <property name="protectedAllowed" value="true"/>
+                  <property name="publicMemberPattern" value="^serialVersionUID"/>
+                  <property name="severity" value="warning"/>
+                </module>
+
+                <module name="UpperEll"/>
+              </module>
+
+            </module>
+          </checkstyleRules>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.rat</groupId>
+        <artifactId>apache-rat-plugin</artifactId>
+        <version>0.10</version>
+        <configuration>
+          <includes>
+            <include>src/**/*</include>
+            <include>pom.xml</include>
+          </includes>
+          <excludes>
+            <exclude>**/*/MANIFEST.MF</exclude>
+            <exclude>.git</exclude>
+            <exclude>.gitignore</exclude>
+            <exclude>derby.log</exclude>
+            <exclude>**/META-INF/services/*</exclude>
+            <exclude>**/bootstrap-*</exclude>
+            <exclude>**/js/jquery-*</exclude>
+            <exclude>**/*.json</exclude>
+            <!-- json can't get comments -->
+          </excludes>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
@@ -314,22 +356,6 @@
       </plugin>
     </plugins>
   </build>
-
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${maven.checkstyle.plugin.version}</version>
-        <configuration>
-          <configLocation>tomitribe/default-checks.xml</configLocation>
-          <headerFile>${checkstyle.header.file}</headerFile>
-          <failOnViolation>true</failOnViolation>
-          <logViolationsToConsole>true</logViolationsToConsole>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
 
 </project>
 
