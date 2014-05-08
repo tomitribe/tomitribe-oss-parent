@@ -19,9 +19,7 @@
    * under the License.
    */
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -34,7 +32,7 @@
   <groupId>org.tomitribe</groupId>
   <artifactId>oss-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1-SNAPSHOT</version>
+  <version>1</version>
 
   <name>Tomitribe :: Open Source Parent POM</name>
   <url>http://www.tomitribe.com/</url>
@@ -55,6 +53,7 @@
     <connection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</connection>
     <url>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</url>
     <developerConnection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</developerConnection>
+    <tag>oss-parent-1</tag>
   </scm>
 
   <properties>
@@ -166,25 +165,25 @@
           <logViolationsToConsole>true</logViolationsToConsole>
           <checkstyleRules>
             <module name="Checker">
-              <module name="SuppressionCommentFilter"/>
+              <module name="SuppressionCommentFilter" />
 
               <!-- Checks for Size Violations.                    -->
               <!-- See http://checkstyle.sf.net/config_sizes.html -->
               <module name="FileLength">
-                <property name="max" value="3500"/>
-                <property name="fileExtensions" value="java"/>
+                <property name="max" value="3500" />
+                <property name="fileExtensions" value="java" />
               </module>
 
               <!-- Checks for whitespace                               -->
               <!-- See http://checkstyle.sf.net/config_whitespace.html -->
-              <module name="FileTabCharacter"/>
+              <module name="FileTabCharacter" />
 
               <!-- allow usage of CHECKSTYLE:OFF and CHECKSTYLE:ON -->
-              <module name="SuppressionCommentFilter"/>
+              <module name="SuppressionCommentFilter" />
 
               <module name="TreeWalker">
                 <!-- needed for the SuppressionCommentFilter -->
-                <module name="FileContentsHolder"/>
+                <module name="FileContentsHolder" />
 
                 <!-- Checks for Naming Conventions.                  -->
                 <!-- See http://checkstyle.sf.net/config_naming.html -->
@@ -198,83 +197,81 @@
                      -    name rules to vary by the type of the constant, and no other alternative seems
                      -    any better.
                      -->
-                  <property name="format"
-                            value="^_?((log)|(logger)|([a-z][a-zA-Z]*ThreadLocal)|([A-Z][A-Z0-9]*(_[A-Z0-9]+)*))$"/>
+                  <property name="format" value="^_?((log)|(logger)|([a-z][a-zA-Z]*ThreadLocal)|([A-Z][A-Z0-9]*(_[A-Z0-9]+)*))$" />
                 </module>
 
-                <module name="LocalVariableName"/>
+                <module name="LocalVariableName" />
                 <module name="MethodName">
-                  <property name="format" value="^_?[a-z][a-zA-Z0-9]*$"/>
+                  <property name="format" value="^_?[a-z][a-zA-Z0-9]*$" />
                 </module>
-                <module name="PackageName"/>
-                <module name="LocalFinalVariableName"/>
-                <module name="ParameterName"/>
-                <module name="StaticVariableName"/>
+                <module name="PackageName" />
+                <module name="LocalFinalVariableName" />
+                <module name="ParameterName" />
+                <module name="StaticVariableName" />
                 <module name="TypeName">
-                  <property name="format" value="^_?[A-Z][a-zA-Z0-9]*$"/>
+                  <property name="format" value="^_?[A-Z][a-zA-Z0-9]*$" />
                 </module>
 
                 <!-- Checks for imports                              -->
                 <!-- See http://checkstyle.sf.net/config_import.html -->
                 <module name="AvoidStarImport">
-                  <property name="excludes"
-                            value="java.io,java.net,java.util,javax.enterprise.inject.spi,javax.enterprise.context"/>
+                  <property name="excludes" value="java.io,java.net,java.util,javax.enterprise.inject.spi,javax.enterprise.context" />
                 </module>
-                <module name="IllegalImport"/>
-                <module name="RedundantImport"/>
-                <module name="UnusedImports"/>
+                <module name="IllegalImport" />
+                <module name="RedundantImport" />
+                <module name="UnusedImports" />
 
 
                 <module name="LineLength">
-                  <property name="max" value="180"/>
-                  <property name="ignorePattern" value="@version|@see"/>
+                  <property name="max" value="180" />
+                  <property name="ignorePattern" value="@version|@see" />
                 </module>
                 <module name="MethodLength">
-                  <property name="max" value="250"/>
+                  <property name="max" value="250" />
                 </module>
                 <module name="ParameterNumber">
-                  <property name="max" value="10"/>
+                  <property name="max" value="10" />
                 </module>
 
                 <!-- Checks for blocks. You know, those {}'s         -->
                 <!-- See http://checkstyle.sf.net/config_blocks.html -->
                 <module name="EmptyBlock">
-                  <property name="option" value="text"/>
+                  <property name="option" value="text" />
                 </module>
 
-                <module name="NeedBraces"/>
+                <module name="NeedBraces" />
                 <module name="LeftCurly">
-                  <property name="option" value="NLOW"/>
+                  <property name="option" value="NLOW" />
                 </module>
                 <module name="RightCurly">
-                  <property name="option" value="SAME"/>
+                  <property name="option" value="SAME" />
                 </module>
 
                 <!-- Checks for common coding problems               -->
                 <!-- See http://checkstyle.sf.net/config_coding.html -->
-                <module name="EmptyStatement"/>
-                <module name="EqualsHashCode"/>
-                <module name="DefaultComesLast"/>
-                <module name="MissingSwitchDefault"/>
-                <module name="FallThrough"/>
-                <module name="MultipleVariableDeclarations"/>
+                <module name="EmptyStatement" />
+                <module name="EqualsHashCode" />
+                <module name="DefaultComesLast" />
+                <module name="MissingSwitchDefault" />
+                <module name="FallThrough" />
+                <module name="MultipleVariableDeclarations" />
 
                 <!-- Checks for class design                         -->
                 <!-- See http://checkstyle.sf.net/config_design.html -->
                 <module name="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck">
-                  <property name="severity" value="ignore"/>
+                  <property name="severity" value="ignore" />
                 </module>
 
-                <module name="HideUtilityClassConstructor"/>
+                <module name="HideUtilityClassConstructor" />
 
                 <module name="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck">
-                  <property name="packageAllowed" value="false"/>
-                  <property name="protectedAllowed" value="true"/>
-                  <property name="publicMemberPattern" value="^serialVersionUID"/>
-                  <property name="severity" value="warning"/>
+                  <property name="packageAllowed" value="false" />
+                  <property name="protectedAllowed" value="true" />
+                  <property name="publicMemberPattern" value="^serialVersionUID" />
+                  <property name="severity" value="warning" />
                 </module>
 
-                <module name="UpperEll"/>
+                <module name="UpperEll" />
               </module>
 
             </module>
