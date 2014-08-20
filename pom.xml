@@ -188,16 +188,24 @@
                 <!-- Checks for Naming Conventions.                  -->
                 <!-- See http://checkstyle.sf.net/config_naming.html -->
                 <module name="ConstantName">
-                  <!-- Normal rules, except that:
-                     -  * any name can start with an underscore.
-                     -  * "log" is allowed; this is a traditional name for log objects
-                     -  * names ending with "ThreadLocal" are allowed so that threadlocal vars don't have to be
-                     -    all-caps. They are static final, but are not really constants. Yes, type prefixes
-                     -    on variable names sucks ("hungarian notation") but checkstyle doesn't allow
-                     -    name rules to vary by the type of the constant, and no other alternative seems
-                     -    any better.
+                  <!-- 0=Allowed, 1=Disallowed  (see checkConstants.sh in pom source tree)
+                    0 foo
+                    0 fooBar
+                    0 fooBarBaz
+                    0 FOO
+                    0 FOO_BAR
+                    0 FOO_BAR_BAZ
+                    0 _fooBar
+                    0 f9
+                    0 F9_C3
+                    1 FooBar
+                    1 foo_bar
+                    1 FOO__BAR
+                    1 _FOO
+                    1 foo_
+                    1 FOO_
                      -->
-                  <property name="format" value="^_?((log)|(logger)|([a-z][a-zA-Z]*ThreadLocal)|([A-Z][A-Z0-9]*(_[A-Z0-9]+)*))$" />
+                  <property name="format" value="^(_?[a-z][a-zA-Z0-9]*|([A-Z](_?[A-Z0-9]+)*))$" />
                 </module>
 
                 <module name="LocalVariableName" />
