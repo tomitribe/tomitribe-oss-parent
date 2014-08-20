@@ -217,7 +217,32 @@
                 <module name="AvoidStarImport">
                   <property name="excludes" value="java.io,java.net,java.util,javax.enterprise.inject.spi,javax.enterprise.context" />
                 </module>
-                <module name="IllegalImport" />
+                <module name="IllegalImport">
+                  <property name="illegalPkgs" value="
+                  sun.management,
+                  sun.usagetracker,
+                  sun.reflect,
+                  sun.launcher,
+                  sun.jar,
+                  sun.print,
+                  sun.java2d,
+                  sun.font,
+                  sun.rmi,
+                  sun.util,
+                  sun.instrument,
+                  sun.applet,
+                  sun.swing,
+                  sun.invoke,
+                  sun.audio,
+                  sun.net,
+                  sun.dc,
+                  sun.corba,
+                  sun.tracing,
+                  sun.security,
+                  sun.lwawt,
+                  sun.awt,
+                  "/>
+                </module>
                 <module name="RedundantImport" />
                 <module name="UnusedImports" />
 
