@@ -252,6 +252,9 @@
                 <module name="NeedBraces">
                     <property name="tokens" value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_WHILE" />
                 </module>
+                <module name="LeftCurly">
+                  <property name="option" value="EOL" />
+                </module>
                 <module name="RightCurly">
                   <property name="option" value="SAME" />
                 </module>
