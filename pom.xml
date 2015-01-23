@@ -32,7 +32,7 @@
   <groupId>org.tomitribe</groupId>
   <artifactId>oss-parent</artifactId>
   <packaging>pom</packaging>
-  <version>4-SNAPSHOT</version>
+  <version>3-SNAPSHOT</version>
 
   <name>Tomitribe :: Open Source Parent POM</name>
   <url>http://www.tomitribe.com/</url>
