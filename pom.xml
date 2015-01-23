@@ -32,7 +32,7 @@
   <groupId>org.tomitribe</groupId>
   <artifactId>oss-parent</artifactId>
   <packaging>pom</packaging>
-  <version>3-SNAPSHOT</version>
+  <version>3</version>
 
   <name>Tomitribe :: Open Source Parent POM</name>
   <url>http://www.tomitribe.com/</url>
@@ -53,7 +53,7 @@
     <connection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</connection>
     <url>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</url>
     <developerConnection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>oss-parent-3</tag>
   </scm>
 
   <properties>
@@ -226,7 +226,7 @@
                   <property name="excludes" value="java.io,java.net,java.util,javax.enterprise.inject.spi,javax.enterprise.context" />
                 </module>
                 <module name="IllegalImport">
-                  <property name="illegalPkgs" value=" sun.management, sun.usagetracker, sun.reflect,                   sun.launcher,                   sun.jar,                   sun.print,                   sun.java2d,                   sun.font,                   sun.rmi,                   sun.util,                   sun.instrument,                   sun.applet,                   sun.swing,                   sun.invoke,                   sun.audio,                   sun.net,                   sun.dc,                   sun.corba,                   sun.tracing,                   sun.security,                   sun.lwawt,                   sun.awt,                   " />
+                  <property name="illegalPkgs" value=" sun.management, sun.usagetracker, sun.reflect, sun.launcher,                   sun.jar,                   sun.print,                   sun.java2d,                   sun.font,                   sun.rmi,                   sun.util,                   sun.instrument,                   sun.applet,                   sun.swing,                   sun.invoke,                   sun.audio,                   sun.net,                   sun.dc,                   sun.corba,                   sun.tracing,                   sun.security,                   sun.lwawt,                   sun.awt,                   " />
                 </module>
                 <module name="RedundantImport" />
                 <module name="UnusedImports" />
