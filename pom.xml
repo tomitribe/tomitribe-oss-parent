@@ -60,7 +60,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!--WARNING: Never reference these properties outside of this pom, especially not in children-->
-    <maven.checkstyle.plugin.version>2.12.1</maven.checkstyle.plugin.version>
+    <maven.checkstyle.plugin.version>2.15</maven.checkstyle.plugin.version>
   </properties>
 
   <build>
