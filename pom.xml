@@ -60,7 +60,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!--WARNING: Never reference these properties outside of this pom, especially not in children-->
-    <maven.checkstyle.plugin.version>2.12.1</maven.checkstyle.plugin.version>
+    <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
   </properties>
 
   <build>
@@ -309,6 +309,8 @@
             <exclude>**/bootstrap-*</exclude>
             <exclude>**/js/jquery-*</exclude>
             <exclude>**/*.json</exclude>
+            <exclude>src/test/resources/**</exclude>
+            <exclude>src/*/resources/META-INF/beans.xml</exclude>
             <!-- json can't get comments -->
           </excludes>
         </configuration>
