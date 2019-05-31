@@ -26,7 +26,7 @@
   <parent>
     <groupId>org.sonatype.oss</groupId>
     <artifactId>oss-parent</artifactId>
-    <version>7</version>
+    <version>9</version>
   </parent>
 
   <groupId>org.tomitribe</groupId>
@@ -237,7 +237,7 @@
                   <property name="ignorePattern" value="@version|@see" />
                 </module>
                 <module name="MethodLength">
-                  <property name="max" value="250" />
+                  <property name="max" value="260" />
                 </module>
                 <module name="ParameterNumber">
                   <property name="max" value="10" />
@@ -265,7 +265,6 @@
                 <module name="EqualsHashCode" />
                 <module name="DefaultComesLast" />
                 <module name="MissingSwitchDefault" />
-                <module name="FallThrough" />
                 <module name="MultipleVariableDeclarations" />
 
                 <!-- Checks for class design                         -->
