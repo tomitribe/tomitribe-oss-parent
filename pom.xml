@@ -19,8 +19,7 @@
    * under the License.
    */
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -33,7 +32,7 @@
   <groupId>org.tomitribe</groupId>
   <artifactId>oss-parent</artifactId>
   <packaging>pom</packaging>
-  <version>8-SNAPSHOT</version>
+  <version>8</version>
 
   <name>Tomitribe :: Open Source Parent POM</name>
   <url>http://www.tomitribe.com/</url>
@@ -54,7 +53,7 @@
     <connection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</connection>
     <url>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</url>
     <developerConnection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</developerConnection>
-    <tag>oss-parent-7</tag>
+    <tag>oss-parent-8</tag>
   </scm>
 
   <properties>
@@ -183,94 +182,92 @@
           <consoleOutput>true</consoleOutput>
           <checkstyleRules>
             <module name="Checker">
-              <property name="severity" value="error"/>
+              <property name="severity" value="error" />
 
               <module name="FileLength">
-                <property name="max" value="180"/>
-                <property name="fileExtensions" value="java"/>
+                <property name="max" value="180" />
+                <property name="fileExtensions" value="java" />
               </module>
 
-              <module name="FileTabCharacter"/>
+              <module name="FileTabCharacter" />
 
               <module name="TreeWalker">
 
                 <module name="ConstantName">
-                  <property name="format" value="^(_?[a-z][a-zA-Z0-9]*|([A-Z](_?[A-Z0-9]+)*))$"/>
+                  <property name="format" value="^(_?[a-z][a-zA-Z0-9]*|([A-Z](_?[A-Z0-9]+)*))$" />
                 </module>
 
                 <module name="LocalVariableName" />
                 <module name="MethodName">
-                  <property name="format" value="^_?[a-z][a-zA-Z0-9]*$"/>
+                  <property name="format" value="^_?[a-z][a-zA-Z0-9]*$" />
                 </module>
-                <module name="PackageName"/>
-                <module name="LocalFinalVariableName"/>
-                <module name="ParameterName"/>
-                <module name="StaticVariableName"/>
+                <module name="PackageName" />
+                <module name="LocalFinalVariableName" />
+                <module name="ParameterName" />
+                <module name="StaticVariableName" />
                 <module name="TypeName">
-                  <property name="format" value="^_?[A-Z][a-zA-Z0-9]*$"/>
+                  <property name="format" value="^_?[A-Z][a-zA-Z0-9]*$" />
                 </module>
 
                 <module name="AvoidStarImport">
-                  <property name="excludes" value="java.io,java.net,java.util"/>
+                  <property name="excludes" value="java.io,java.net,java.util" />
                 </module>
 
                 <module name="IllegalImport">
-                  <property name="illegalPkgs"
-                            value="sun.management,sun.usagetracker,sun.reflect,sun.launcher,sun.jar,sun.print,sun.java2d,sun.font,sun.rmi,sun.util,sun.instrument,sun.applet,sun.swing,sun.invoke,sun.audio,sun.net,sun.dc,sun.corba,sun.tracing,sun.security,sun.lwawt,sun.awt"/>
+                  <property name="illegalPkgs" value="sun.management,sun.usagetracker,sun.reflect,sun.launcher,sun.jar,sun.print,sun.java2d,sun.font,sun.rmi,sun.util,sun.instrument,sun.applet,sun.swing,sun.invoke,sun.audio,sun.net,sun.dc,sun.corba,sun.tracing,sun.security,sun.lwawt,sun.awt" />
                 </module>
 
-                <module name="RedundantImport"/>
-                <module name="UnusedImports"/>
+                <module name="RedundantImport" />
+                <module name="UnusedImports" />
 
                 <module name="MethodLength">
                   <property name="max" value="250" />
                 </module>
 
                 <module name="ParameterNumber">
-                  <property name="max" value="10"/>
+                  <property name="max" value="10" />
                 </module>
 
                 <module name="EmptyBlock">
-                  <property name="option" value="text"/>
+                  <property name="option" value="text" />
                 </module>
 
                 <module name="NeedBraces">
-                  <property name="tokens" value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_WHILE"/>
+                  <property name="tokens" value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_WHILE" />
                 </module>
 
                 <module name="LeftCurly">
-                  <property name="option" value="eol"/>
+                  <property name="option" value="eol" />
                 </module>
 
                 <module name="RightCurly">
-                  <property name="option" value="same"/>
+                  <property name="option" value="same" />
                 </module>
 
-                <module name="EmptyStatement"/>
-                <module name="EqualsHashCode"/>
-                <module name="DefaultComesLast"/>
-                <module name="MissingSwitchDefault"/>
-                <module name="MultipleVariableDeclarations"/>
+                <module name="EmptyStatement" />
+                <module name="EqualsHashCode" />
+                <module name="DefaultComesLast" />
+                <module name="MissingSwitchDefault" />
+                <module name="MultipleVariableDeclarations" />
 
                 <module name="DesignForExtension">
-                  <property name="severity" value="ignore"/>
+                  <property name="severity" value="ignore" />
                 </module>
 
                 <!--
                 -->
                 <module name="HideUtilityClassConstructor">
-                  <property name="ignoreAnnotatedBy"
-                            value="java.lang.Deprecated" />
+                  <property name="ignoreAnnotatedBy" value="java.lang.Deprecated" />
                 </module>
 
                 <module name="VisibilityModifier">
-                  <property name="packageAllowed" value="false"/>
-                  <property name="protectedAllowed" value="true"/>
-                  <property name="publicMemberPattern" value="^serialVersionUID"/>
-                  <property name="severity" value="warning"/>
+                  <property name="packageAllowed" value="false" />
+                  <property name="protectedAllowed" value="true" />
+                  <property name="publicMemberPattern" value="^serialVersionUID" />
+                  <property name="severity" value="warning" />
                 </module>
 
-                <module name="UpperEll"/>
+                <module name="UpperEll" />
               </module>
             </module>
           </checkstyleRules>
