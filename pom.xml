@@ -47,7 +47,7 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  <inceptionYear>2014</inceptionYear>
+  <inceptionYear>2025</inceptionYear>
 
   <scm>
     <connection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</connection>
@@ -60,11 +60,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!--WARNING: Never reference these properties outside of this pom, especially not in children-->
-    <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
+    <maven.checkstyle.plugin.version>3.3.1</maven.checkstyle.plugin.version>
   </properties>
 
   <prerequisites>
-    <maven>3.3.0</maven>
+    <maven>3.6.3</maven>
   </prerequisites>
 
   <build>
@@ -79,47 +79,47 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
-          <version>3.6.0</version>
+          <version>3.7.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.4.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.11.0</version>
+          <version>3.14.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>3.1.4</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.3.0</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>3.1.1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.3.0</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
           <version>3.5.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>3.1.4</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.4.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.11.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.1.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -129,17 +129,17 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>3.3.0</version>
+          <version>3.3.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.1.2</version>
+          <version>3.5.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
-          <version>3.5.0</version>
+          <version>3.6.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -156,6 +156,18 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>${maven.checkstyle.plugin.version}</version>
+        <dependencies>
+          <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.1-jre</version>
+          </dependency>
+          <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>10.12.1</version>
+          </dependency>
+        </dependencies>
         <executions>
           <execution>
             <id>verify-style</id>
@@ -169,126 +181,89 @@
           <logViolationsToConsole>true</logViolationsToConsole>
           <checkstyleRules>
             <module name="Checker">
-              <module name="SuppressionCommentFilter" />
+              <property name="severity" value="error"/>
 
-              <!-- Checks for Size Violations.                    -->
-              <!-- See http://checkstyle.sf.net/config_sizes.html -->
               <module name="FileLength">
-                <property name="max" value="3500" />
-                <property name="fileExtensions" value="java" />
+                <property name="max" value="180"/>
+                <property name="fileExtensions" value="java"/>
               </module>
 
-              <!-- Checks for whitespace                               -->
-              <!-- See http://checkstyle.sf.net/config_whitespace.html -->
-              <module name="FileTabCharacter" />
-
-              <!-- allow usage of CHECKSTYLE:OFF and CHECKSTYLE:ON -->
-              <module name="SuppressionCommentFilter" />
+              <module name="FileTabCharacter"/>
 
               <module name="TreeWalker">
-                <!-- needed for the SuppressionCommentFilter -->
-                <module name="FileContentsHolder" />
 
-                <!-- Checks for Naming Conventions.                  -->
-                <!-- See http://checkstyle.sf.net/config_naming.html -->
                 <module name="ConstantName">
-                  <!-- 0=Allowed, 1=Disallowed  (see checkConstants.sh in pom source tree)
-                    0 foo
-                    0 fooBar
-                    0 fooBarBaz
-                    0 FOO
-                    0 FOO_BAR
-                    0 FOO_BAR_BAZ
-                    0 _fooBar
-                    0 f9
-                    0 F9_C3
-                    1 FooBar
-                    1 foo_bar
-                    1 FOO__BAR
-                    1 _FOO
-                    1 foo_
-                    1 FOO_
-                     -->
-                  <property name="format" value="^(_?[a-z][a-zA-Z0-9]*|([A-Z](_?[A-Z0-9]+)*))$" />
+                  <property name="format" value="^(_?[a-z][a-zA-Z0-9]*|([A-Z](_?[A-Z0-9]+)*))$"/>
                 </module>
-
-                <module name="LocalVariableName" />
+                <module name="LocalVariableName"/>
                 <module name="MethodName">
-                  <property name="format" value="^_?[a-z][a-zA-Z0-9]*$" />
+                  <property name="format" value="^_?[a-z][a-zA-Z0-9]*$"/>
                 </module>
-                <module name="PackageName" />
-                <module name="LocalFinalVariableName" />
-                <module name="ParameterName" />
-                <module name="StaticVariableName" />
+                <module name="PackageName"/>
+                <module name="LocalFinalVariableName"/>
+                <module name="ParameterName"/>
+                <module name="StaticVariableName"/>
                 <module name="TypeName">
-                  <property name="format" value="^_?[A-Z][a-zA-Z0-9]*$" />
+                  <property name="format" value="^_?[A-Z][a-zA-Z0-9]*$"/>
                 </module>
 
-                <!-- Checks for imports                              -->
-                <!-- See http://checkstyle.sf.net/config_import.html -->
                 <module name="AvoidStarImport">
-                  <property name="excludes" value="java.io,java.net,java.util,javax.enterprise.inject.spi,javax.enterprise.context" />
+                  <property name="excludes" value="java.io,java.net,java.util"/>
                 </module>
+
                 <module name="IllegalImport">
-                  <property name="illegalPkgs" value=" sun.management, sun.usagetracker, sun.reflect, sun.launcher, sun.jar, sun.print, sun.java2d, sun.font, sun.rmi, sun.util, sun.instrument, sun.applet, sun.swing,                   sun.invoke,                   sun.audio,                   sun.net,                   sun.dc,                   sun.corba,                   sun.tracing,                   sun.security,                   sun.lwawt,                   sun.awt,                   " />
+                  <property name="illegalPkgs"
+                            value="sun.management,sun.usagetracker,sun.reflect,sun.launcher,sun.jar,sun.print,sun.java2d,sun.font,sun.rmi,sun.util,sun.instrument,sun.applet,sun.swing,sun.invoke,sun.audio,sun.net,sun.dc,sun.corba,sun.tracing,sun.security,sun.lwawt,sun.awt"/>
                 </module>
-                <module name="RedundantImport" />
-                <module name="UnusedImports" />
 
+                <module name="RedundantImport"/>
+                <module name="UnusedImports"/>
 
-                <module name="LineLength">
-                  <property name="max" value="180" />
-                  <property name="ignorePattern" value="@version|@see" />
-                </module>
                 <module name="MethodLength">
-                  <property name="max" value="260" />
-                </module>
-                <module name="ParameterNumber">
-                  <property name="max" value="10" />
+                  <property name="max" value="260"/>
                 </module>
 
-                <!-- Checks for blocks. You know, those {}'s         -->
-                <!-- See http://checkstyle.sf.net/config_blocks.html -->
+                <module name="ParameterNumber">
+                  <property name="max" value="10"/>
+                </module>
+
                 <module name="EmptyBlock">
-                  <property name="option" value="text" />
+                  <property name="option" value="text"/>
                 </module>
 
                 <module name="NeedBraces">
-                    <property name="tokens" value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_WHILE" />
+                  <property name="tokens" value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_WHILE"/>
                 </module>
+
                 <module name="LeftCurly">
-                  <property name="option" value="EOL" />
+                  <property name="option" value="eol"/>
                 </module>
+
                 <module name="RightCurly">
-                  <property name="option" value="SAME" />
+                  <property name="option" value="same"/>
                 </module>
 
-                <!-- Checks for common coding problems               -->
-                <!-- See http://checkstyle.sf.net/config_coding.html -->
-                <module name="EmptyStatement" />
-                <module name="EqualsHashCode" />
-                <module name="DefaultComesLast" />
-                <module name="MissingSwitchDefault" />
-                <module name="MultipleVariableDeclarations" />
+                <module name="EmptyStatement"/>
+                <module name="EqualsHashCode"/>
+                <module name="DefaultComesLast"/>
+                <module name="MissingSwitchDefault"/>
+                <module name="MultipleVariableDeclarations"/>
 
-                <!-- Checks for class design                         -->
-                <!-- See http://checkstyle.sf.net/config_design.html -->
-                <module name="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck">
-                  <property name="severity" value="ignore" />
+                <module name="DesignForExtension">
+                  <property name="severity" value="ignore"/>
                 </module>
 
-                <module name="HideUtilityClassConstructor" />
+                <module name="HideUtilityClassConstructor"/>
 
-                <module name="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck">
-                  <property name="packageAllowed" value="false" />
-                  <property name="protectedAllowed" value="true" />
-                  <property name="publicMemberPattern" value="^serialVersionUID" />
-                  <property name="severity" value="warning" />
+                <module name="VisibilityModifier">
+                  <property name="packageAllowed" value="false"/>
+                  <property name="protectedAllowed" value="true"/>
+                  <property name="publicMemberPattern" value="^serialVersionUID"/>
+                  <property name="severity" value="warning"/>
                 </module>
 
-                <module name="UpperEll" />
+                <module name="UpperEll"/>
               </module>
-
             </module>
           </checkstyleRules>
         </configuration>
@@ -297,7 +272,7 @@
       <plugin>
         <groupId>org.apache.rat</groupId>
         <artifactId>apache-rat-plugin</artifactId>
-        <version>0.11</version>
+        <version>0.16.1</version>
         <configuration>
           <includes>
             <include>src/**/*</include>
@@ -331,7 +306,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <release>11</release>
+          <release>17</release>
         </configuration>
       </plugin>
 
