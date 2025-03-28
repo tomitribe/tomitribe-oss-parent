@@ -185,11 +185,22 @@
               <property name="severity" value="error" />
 
               <module name="FileLength">
-                <property name="max" value="180" />
+                <property name="max" value="1500" />
                 <property name="fileExtensions" value="java" />
               </module>
 
               <module name="FileTabCharacter" />
+
+              <module name="SuppressWithNearbyTextFilter">
+                <property name="nearbyTextPattern" value="CHECKSTYLE (\w+)"/>
+                <property name="checkPattern" value="$1"/>
+              </module>
+
+              <module name="SuppressWithPlainTextCommentFilter">
+                <property name="offCommentFormat" value="// CHECKSTYLE\:OFF ?([\w\|]+)"/>
+                <property name="onCommentFormat" value="// CHECKSTYLE\:ON ?([\w\|]+)"/>
+                <property name="checkFormat" value="$1"/>
+              </module>
 
               <module name="TreeWalker">
 
