@@ -32,7 +32,7 @@
   <groupId>org.tomitribe</groupId>
   <artifactId>oss-parent</artifactId>
   <packaging>pom</packaging>
-  <version>9-SNAPSHOT</version>
+  <version>9</version>
 
   <name>Tomitribe :: Open Source Parent POM</name>
   <url>http://www.tomitribe.com/</url>
@@ -53,7 +53,7 @@
     <connection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</connection>
     <url>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</url>
     <developerConnection>scm:git:git@github.com:tomitribe/tomitribe-oss-parent.git</developerConnection>
-    <tag>oss-parent-7</tag>
+    <tag>oss-parent-9</tag>
   </scm>
 
   <properties>
@@ -192,19 +192,19 @@
               <module name="FileTabCharacter" />
 
               <module name="SuppressWithNearbyTextFilter">
-                <property name="nearbyTextPattern" value="CHECKSTYLE (\w+)"/>
-                <property name="checkPattern" value="$1"/>
+                <property name="nearbyTextPattern" value="CHECKSTYLE (\w+)" />
+                <property name="checkPattern" value="$1" />
               </module>
 
               <module name="SuppressWithPlainTextCommentFilter">
-                <property name="offCommentFormat" value="// CHECKSTYLE\:OFF ?([\w\|]+)"/>
-                <property name="onCommentFormat" value="// CHECKSTYLE\:ON ?([\w\|]+)"/>
-                <property name="checkFormat" value="$1"/>
+                <property name="offCommentFormat" value="// CHECKSTYLE\:OFF ?([\w\|]+)" />
+                <property name="onCommentFormat" value="// CHECKSTYLE\:ON ?([\w\|]+)" />
+                <property name="checkFormat" value="$1" />
               </module>
 
               <module name="TreeWalker">
 
-                <module name="SuppressionCommentFilter"/>
+                <module name="SuppressionCommentFilter" />
 
                 <module name="ConstantName">
                   <property name="format" value="^(_?[a-z][a-zA-Z0-9]*|([A-Z](_?[A-Z0-9]+)*))$" />
