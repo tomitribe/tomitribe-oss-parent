@@ -56,6 +56,23 @@
     <tag>oss-parent-7</tag>
   </scm>
 
+  <developers>
+    <developer>
+      <id>jlmonteiro</id>
+      <name>Jean-Louis Monteiro</name>
+      <email>jlmonteiro@tomitribe.com</email>
+      <organization>Tomitribe</organization>
+      <organizationUrl>https://www.tomitribe.com</organizationUrl>
+    </developer>
+    <developer>
+      <id>dblevins</id>
+      <name>David Blevins</name>
+      <email>dblevins@tomitribe.com</email>
+      <organization>Tomitribe</organization>
+      <organizationUrl>https://www.tomitribe.com</organizationUrl>
+    </developer>
+  </developers>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
