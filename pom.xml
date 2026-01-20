@@ -364,26 +364,26 @@
   </build>
 
   <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-    </snapshotRepository>
     <repository>
-      <id>ossrh</id>
-      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
+      <id>ossrh-releases</id>
+      <url>https://central.sonatype.com/repository/maven-releases/</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
     </repository>
+    <snapshotRepository>
+      <id>ossrh-snapshots</id>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </snapshotRepository>
   </distributionManagement>
 
 </project>
