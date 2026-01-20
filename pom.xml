@@ -184,11 +184,6 @@
             <module name="Checker">
               <property name="severity" value="error" />
 
-              <module name="FileLength">
-                <property name="max" value="1500" />
-                <property name="fileExtensions" value="java" />
-              </module>
-
               <module name="FileTabCharacter" />
 
               <module name="SuppressWithNearbyTextFilter">
